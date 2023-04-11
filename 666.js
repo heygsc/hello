@@ -1,2 +1,2 @@
-let x = 5;
+let x = 10000;
 console.log(x);
