@@ -6,7 +6,7 @@ on:
     
 jobs:
   build:
-    # if: github.head.ref == 'test'
+    if: github.head_ref == 'test'
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
