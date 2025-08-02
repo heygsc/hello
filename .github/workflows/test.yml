@@ -2,8 +2,7 @@ name: test
 
 on:
   schedule:
-    # 北京时间 10:45 和 10:50（UTC 02:45 和 02:50）
-    - cron: '45,50 2 * * *'
+    - cron: '0 0,12 * * *'
 
 jobs:
   run-job:
