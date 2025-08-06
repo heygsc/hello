@@ -1,0 +1,21 @@
+name: TEST
+on:
+  workflow_dispatch:
+
+jobs:
+  print_macos_info:
+    runs-on: macos-latest
+    steps:
+      - name: Extract Key macOS Info
+        run: |
+          echo "===== macOS 关键信息 ====="
+          # 提取系统版本
+          echo "系统版本: $(sw_vers -productVersion)"
+          # 提取芯片型号（Apple Silicon 或 Intel）
+          CHIP_INFO=$(system_profiler SPHardwareDataType | awk -F': ' '/Chip|Processor Name/ {print $2}' | head -n1)
+          echo "芯片型号: ${CHIP_INFO:-Unknown}"
+          # 提取机型标识（如 MacBookPro18,3）
+          MODEL_ID=$(system_profiler SPHardwareDataType | awk -F': ' '/Model Identifier/ {print $2}')
+          echo "机型标识: $MODEL_ID"
+          # 检测架构（arm64 或 x86_64）
+          echo "处理器架构: $(uname -m)"
